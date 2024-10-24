@@ -3,14 +3,11 @@ const qrcode = require("qrcode-terminal");
 const axios = require("axios");
 const sharp = require("sharp");
 const Tesseract = require("tesseract.js");
+require("dotenv").config();
 
-// Ganti API_KEY dengan API kunci dari Gemini atau AI lainnya
-const GEMINI_API_KEY = "AIzaSyASaLBZvfBGZf3oz1GZFgVsK7585APN7cA6";
-const GEMINI_API_URL =
-  "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent6";
-const GRUP_TARGETS = [
-  "120363327112977607@g.us", // STEKOM
-];
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const GEMINI_API_URL = process.env.GEMINI_API_URL;
+const GRUP_TARGETS = process.env.GRUP_TARGETS.split(",");
 
 // Inisialisasi client WhatsApp
 const client = new Client({
